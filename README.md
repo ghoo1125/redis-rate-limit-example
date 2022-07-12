@@ -1,48 +1,6 @@
-# Basic Redis Rate-limiting Demo Spring (Java) 
+# Redis Rate-limiting with Spring Example
 
-This application demonstrates rate limiting using Redis and Spring.
-
-
-
-## Try it out
-<p>
-    <a href="https://heroku.com/deploy" target="_blank">
-        <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy to Heorku" width="200px"/>
-    <a>
-</p>
-
-<p>
-    <a href="https://deploy.cloud.run?dir=server" target="_blank">
-        <img src="https://deploy.cloud.run/button.svg" alt="Run on Google Cloud" width="200px"/>
-    </a>
-    (See notes: How to run on Google Cloud)
-</p>
-
-
-## How to run on Google Cloud
-
-
-1. Open link google cloud console.
-
-![1 step](https://github.com/redis-developer/basic-rate-limiting-demo-java/raw/master/docs/1.png)
-
-2. Click "Edit and deploy new revision" button.
-
-![2 step](https://github.com/redis-developer/basic-rate-limiting-demo-java/raw/master/docs/2.png)
-
-3. Add environment.
-
-![3 step](https://github.com/redis-developer/basic-rate-limiting-demo-java/raw/master/docs/3.png)
-
-4.  Select vpc-connector and deploy application.
-
-![4  step](https://github.com/redis-developer/basic-rate-limiting-demo-java/raw/master/docs/4.png)
-
-<a href="https://github.com/GoogleCloudPlatform/cloud-run-button/issues/108#issuecomment-554572173">
-Problem with unsupported flags when deploying google cloud run button
-</a>
-
----
+This application demonstrates rate limiting using Redis and Spring with zuul proxy.
 
 # How it works?
 
@@ -79,29 +37,17 @@ more information</a>  </li>
 
 ## How to run it locally?
 
-#### Open the files server/.env.example to see the available environment variables. You may set these variables when you start the application.
-   	- REDIS_URL: Redis server url
-    - REDIS_HOST: Redis server host
-	- REDIS_PORT: Redis server port
-	- REDIS_PASSWORD: Redis server password
-
-#### Run backend
-
-1. Install gradle (Use Gradle 6.3 or later) (on mac: https://gradle.org/install/) 
-
-2. Install JDK (use 8 or later version) (on mac: https://docs.oracle.com/javase/10/install/installation-jdk-and-jre-macos.htm)
-
-3. Set any relevant environment variables (if not connecting to Redis on localhost:6379). For example:
-
-``` sh
-$ REDIS_PORT=6379
+1. Run redis container
+``` bash
+docker network create global
+docker-compose up -d --build
 ```
 
-3. From the root directory of the project, run the following commands:
-``` sh
+2. Run API server:
+``` bash
 cd server
 ./gradlew build
 ./gradlew run
 ```
 
-4. Point your browser to `localhost:5000`.
+3. Point your browser to `localhost:5000`.
