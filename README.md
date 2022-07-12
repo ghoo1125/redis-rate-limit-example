@@ -1,6 +1,7 @@
 # Redis Rate-limiting with Spring Example
 
 This application demonstrates rate limiting using Redis and Spring with zuul proxy.
+Refer to https://github.com/redis-developer/basic-rate-limiting-demo-java
 
 # How it works?
 
@@ -11,12 +12,11 @@ This application demonstrates rate limiting using Redis and Spring with zuul pro
  more information</a> 
  <br> <br>
  </li>
- <li> Set a timeout on key:<pre>EXPIRE your_ip:PING timeout
+    <li> Set a timeout on key:<pre>EXPIRE your_ip:PING timeout
 Example: EXPIRE 127.0.0.1:PING 1000 </pre><a href="https://redis.io/commands/expire">
  more information</a>
  </li>
 </ol>
-<br/>
 
 ## 2. How the data is accessed:
 <ol>
